@@ -2,9 +2,11 @@ import streamlit as st
 
 class State:
     def __init__(self):
-        if "logged_in" not in st.session_state:
+        self.logged = "logged_in"
+        self.failed = "login_failed"
+        if self.logged not in st.session_state:
             st.session_state.logged_in = False
-        if "login_failed" not in st.session_state:
+        if self.failed not in st.session_state:
             st.session_state.login_failed = False
 
     def set_logged_in(self, value: bool):
