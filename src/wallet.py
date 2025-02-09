@@ -261,7 +261,7 @@ class Wallet:
 
 
         self.end_date = datetime.now()
-        start_date = self.end_date - timedelta(days=st.session_state.days)
+        start_date = self.end_date - timedelta(days=days)
 
         if not self.ticker_list:
             self.checked = False
