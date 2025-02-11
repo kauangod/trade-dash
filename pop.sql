@@ -1,5 +1,4 @@
 INSERT INTO Company (company_name) VALUES
-('Bitcoin'),
 ('Apple Inc.'),
 ('Microsoft Corporation'),
 ('Amazon.com, Inc.'),
@@ -41,6 +40,7 @@ INSERT INTO Company (company_name) VALUES
 ('BTG Pactual S.A.'),
 ('Eletrobras S.A.'),
 ('WEG S.A.'),
+('Bitcoin'),
 ('Localiza Rent a Car S.A.'),
 ('Telefônica Brasil S.A. (Vivo)'),
 ('CSN - Companhia Siderúrgica Nacional'),
