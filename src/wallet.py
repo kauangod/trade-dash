@@ -184,7 +184,7 @@ class Wallet:
 
         updt_stocklist = []
 
-
+        selecionou_periodo = False
         periodo = self.db.getPeriod(st.session_state.username)
 
         if "selected_period" not in st.session_state:
@@ -243,13 +243,15 @@ class Wallet:
                 # Define o período inicial com base no banco de dados
                 st.session_state.selected_period = list(periodo_dict.keys())[0]
                 st.session_state.days = periodo_dict[st.session_state.selected_period]
-
+                selecionou_periodo = True
             if st.session_state.entrou == 0:
                 selected_period = st.sidebar.selectbox('Selecione o Período:', list(periodo_dict.keys()), index=list(periodo_dict.keys()).index(st.session_state.selected_period))
                 days = periodo_dict[selected_period]
+                selecionou_periodo = True
             else:
                 selected_period = st.sidebar.selectbox('Selecione o Período:', list(self.period.keys()))
                 days = self.period[selected_period]
+                selecionou_periodo = True
             st.session_state.entrou = 1
             st.session_state.selected_period = selected_period
             st.session_state.days = days
@@ -261,8 +263,10 @@ class Wallet:
 
 
         self.end_date = datetime.now()
-        start_date = self.end_date - timedelta(days=st.session_state.days)
-
+        if st.session_state.days:
+            start_date = self.end_date - timedelta(days=st.session_state.days)
+        if not selecionou_periodo:
+            start_date = self.end_date - timedelta(days=5)
         if not self.ticker_list:
             self.checked = False
             st.info("Sua carteira está vazia.")
